@@ -1,0 +1,11 @@
+.cuisinecheckbox input[type="checkbox"] + label {
+    margin-right: 14px;
+}
+
+.ratingradiobuttons input[type="radio"] + label {
+    margin-right: 10px;
+}
+
+.field label {
+   font-weight : bold;
+ }

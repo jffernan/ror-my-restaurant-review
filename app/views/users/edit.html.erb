@@ -1,0 +1,18 @@
+<fieldset>
+<legend>
+  <h3>Update Login Email and/or Password</h3>
+</legend>
+<%= render 'form' %>
+</fieldset>
+  <br/>
+  <fieldset>
+    <legend>
+      <h3>Delete Profile</h3>
+    </legend>
+  <br/>
+  <%= button_to 'Delete User', user_path(@user),
+              method: :delete,
+              data: { confirm: 'This will delete your User profile & ALL your reviews! Continue?' } %>
+  </fieldset>
+</strong>
+<br/>

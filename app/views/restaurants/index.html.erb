@@ -1,0 +1,19 @@
+<br/>
+<fieldset>
+<legend>
+  <h3>Restaurant Directory</h3>
+</legend>
+<br/>
+  <ol>
+    <% @restaurants.each do |restaurant| %>
+      <li>
+        <%= link_to restaurant.name, restaurant %>
+        - Review Count:
+        (<b><%= restaurant.reviews.count %></b>)
+      </li>
+    <% end %>
+  </ol>
+<%= page_entries_info @restaurants %>
+<%= paginate @restaurants, window:2 %>
+</fieldset>
+<br/>

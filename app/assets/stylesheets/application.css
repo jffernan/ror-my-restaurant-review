@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+input:focus, button:focus {
+  background-color: #cccccc
+}
+
+input:not(:focus), button:not(:focus) {
+  background-color: #ffffff
+}

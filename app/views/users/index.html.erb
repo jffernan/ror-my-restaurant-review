@@ -1,0 +1,25 @@
+<fieldset>
+<legend>
+  <h3>Users Directory</h3>
+</legend>
+<br/>
+<ol>
+  <li>
+    <% if logged_in? %>
+      <%= link_to "You", user_path(current_user) %>
+      - Review Count:
+    (<b><%= current_user.reviews.count %></b>)
+    <% end %>
+  </li>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.email.upcase_first, user %>
+      - Review Count:
+      (<b><%= user.reviews.count %></b>)
+    </li>
+  <% end %>
+</ol>
+<%= page_entries_info @users %>
+<%= paginate @users, window:2 %>
+</fieldset>
+<br/>

@@ -1,0 +1,55 @@
+<%= form_for(@review) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <!-- Following nested form writing to assoc. Restaurant model use custom attr writer restaurant_name-->
+  <br/>
+      <%= f.hidden_field :user_id %>
+    <div class="field">
+      <%= f.label :restaurant_name, "Restaurant Name:" %> &ensp;
+      <%= f.text_field :restaurant_name %>
+      <br></br>
+    </div>
+    <div class="field">
+      <%= f.text_area :content, placeholder: "Enter Review Comments:", rows: 5, cols: 100 %>
+      <br></br> <!--Following user submits nested_attribute, cuisine -->
+    </div>
+
+    <div class="col-md-4 cuisinecheckbox">
+      <b>Choose Cuisine: </b>&ensp;
+      <%= f.collection_check_boxes :cuisine_ids, Cuisine.all, :id, :name, include_hidden: false %>
+    </div>
+    <div class="field">
+      <%= f.fields_for :cuisines, @review.cuisines.build do |cuisine_form| %>
+        <%= cuisine_form.text_field :name, placeholder: "Enter New Cuisine:" %>
+      <% end %>
+      <br></br>
+    </div>
+    <div class="col-md-4 ratingradiobuttons">
+      <b>Restaurant Rating: </b>&ensp;
+      <%= f.radio_button :rating, 'Excellent' %>
+      <%= f.label :rating, 'Excellent', value: 'Excellent' %>
+      <%= f.radio_button :rating, 'Good' %>
+      <%= f.label :rating, 'Good', value: 'Good' %>
+      <%= f.radio_button :rating, 'Average' %>
+      <%= f.label :rating, 'Average', value: 'Average' %>
+      <%= f.radio_button :rating, 'Poor' %>
+      <%= f.label :rating, 'Poor', value: 'Poor' %>
+      <br></br>
+    </div>
+    <div class="field">
+      <%= f.label :date_visited, "Date Visited (or today, #{Time.now.strftime("%m/%d/%Y")}):" %> &ensp;
+      <%= f.date_field :date_visited %>
+      </br>
+    </div>
+    <div class="actions">
+      <%= f.submit "Save Review" %>
+    </div>
+<% end %>

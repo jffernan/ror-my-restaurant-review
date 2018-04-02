@@ -1,0 +1,17 @@
+<li>
+  <% review.id %><%= link_to review.try(:restaurant).try(:name), review %>
+  visited on
+  <%= review.date_visited.strftime("%-m/%-d/%Y") %>
+  by
+  <% if current_user == review.user %>
+    <b><%= link_to "you", user_reviews_path(review.user) %></b>
+  <% else %>
+    <%= link_to review.user.email, user_reviews_path(review.user) %>
+  <% end %>&emsp;
+  (Posted <%= time_ago_in_words(review.updated_at) %> ago.)
+  <div id="body-<%= review.id %>">&emsp;
+    Comments:&ensp;"<%= truncate review.content %>"&ensp;
+    <a href="#" class="js-more" data-id="<%= review.id %>">More...</a>&emsp;
+  </div>
+<br/>
+</li>

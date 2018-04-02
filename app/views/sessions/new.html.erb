@@ -1,0 +1,33 @@
+<fieldset>
+<legend>
+  <h3>Log In</h3>
+</legend>
+<%= form_for(:session, url: login_path) do |f| %><!--:user login-->
+  <br/> <!-- errors message will not work w/ form_for since no AR object -->
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  </br>
+    <%= f.submit "Login" %>
+<% end %>
+</fieldset>
+<br></br>
+<%= link_to 'Back', root_path %>
+<!--
+<fieldset>
+<legend>
+  <h3>
+    If you have a Github account, 'click' below for quick login
+  </h3>
+</legend>
+<br/>
+<%= button_to "Login via GitHub", '/auth/github' %>
+</fieldset>
+<br/>
+-->

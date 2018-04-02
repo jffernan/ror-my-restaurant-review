@@ -1,0 +1,88 @@
+<fieldset>
+<legend>
+  <h3>Review Page</h3>
+</legend>
+<br/>
+<ul>
+  <li>Restaurant Name:&ensp;
+    <span class="restName">
+      <%= link_to "#{@current_restaurant.name}", restaurant_path(@current_restaurant) %>
+    </span>
+  </li>
+  <br/>
+  <li>Comments:&ensp;
+    "<span class="reviewBody"><%= @review.content %></span>"
+  </li>
+  <br/>
+  <li>Cuisine:&ensp;
+    <span class="reviewCuisines">
+      <%= @review.cuisines.map{|cuisine| cuisine.name}.join(', ').to_s + "." %>
+    </span>
+  </li>
+  <br/>
+  <li>Rating:&ensp;
+    <span class="reviewRating">
+      <% if @review.rating == "Excellent" %>
+        <b><%= link_to "#{@review.rating}", reviews_path(rating: "Excellent") %></b>
+      <% elsif @review.rating == "Good" %>
+        <b><%= @review.rating %></b>
+      <% elsif @review.rating == "Average" %>
+        <b><%= @review.rating %></b>
+      <% else %>
+        <b><%= @review.rating %></b>
+      <% end %>
+    </span>
+  </li>
+  <br/>
+  <li>Date Visited:&ensp;
+    <span class="reviewDateVisited">
+      <%= @review.date_visited.strftime('%-m/%-d/%Y') %>
+    </span>
+  </li>
+  <br/>
+  <li>Date Reviewed:&ensp;
+    <span class="reviewUpdatedAt">
+      <%= @review.updated_at.strftime('%-m/%-d/%Y') %>
+    </span>
+  </li>
+  <br/>
+<% if current_user != @review.user %> <!--show only another's username-->
+  <li>Reviewed by:&ensp;
+    <span class="userEmail">
+      <b><%= @review.user.email %></b>
+    </span>
+  </li>
+  <br/>
+<% end %>
+<button class="js-next" data-id="<%= @review.id %>">
+  Next Review...
+</button>
+</ul>
+</fieldset>
+<br/>
+<fieldset>
+<legend>
+  <h3>More</h3>
+</legend>
+<br/>
+<% if current_user == @review.user %>
+  <li>
+    <%= link_to "Edit Review", edit_user_review_path(@review.user, @review) %>
+  </li>
+<br/>
+<% end %>
+<li>
+  <%= link_to "Load More Reviews", restaurant_reviews_path(@current_restaurant), :class => "load_more_reviews" %>
+  for <span class="load_more"><b><%= @current_restaurant.name %></b>.</span>
+</li>
+<div class="reviews"></div>
+</br>
+<li>For more info about this restaurant, 'click' to web search for:
+  <span class = "search">
+    <a target="_blank" href = 'http://www.<%= "#{@review.restaurant_name}" %>.com' data-confirm="Are you sure you want to visit an external website?">
+    <%= @review.restaurant_name %></a>
+  </span>
+</li>
+<br/>
+</fieldset>
+<br/>

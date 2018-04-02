@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RorMyRestaurantReview</title>
-    <%= csrf_meta_tags %>
+    <title>My Restaurant Review</title>
+     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <%= stylesheet_link_tag    'application', media: 'all' %>
+     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav>
+      <%= link_to "Home", root_path %>
+      <%= link_to "See Reviews", reviews_path %>
+      <%= link_to "See Restaurants", restaurants_path %>
+      <% if logged_in? %>
+        <%= link_to "#{current_user.email.upcase_first}", user_path(current_user) %>
+        <%= link_to "New Review", new_review_path %>
+        <%= link_to "Settings", edit_user_path(current_user) %>
+        <%= link_to "Logout", logout_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign Up", signup_path %>
+      <% end %>
+
+      <% flash.each do |name, msg| -%>
+        <strong><%= content_tag :div, msg, class: name %></strong>
+      <% end -%>
+    </nav>
+    <div class = "container">
+      <h1>My Restaurant Review</h1>
+      <%= yield %>
+      <footer>
+        <%= link_to "Back", root_path %>
+        <%= render '/users/links' %>
+        <%= render '/reviews/links' %>
+        <% if !logged_in? %>
+          <%= link_to "Log In", login_path %>
+        <% end %>
+      </footer>
+    </div>
   </body>
 </html>

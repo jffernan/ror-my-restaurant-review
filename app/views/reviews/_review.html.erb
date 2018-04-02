@@ -1,0 +1,11 @@
+<li>
+  <%= link_to review.try(:restaurant).try(:name), review %> <!--AR .try method to keep DRY instead of if nil-->
+  was visited by
+   <% if current_user == review.user %>
+    <b>you</b>
+  <% else %>
+    <b><%= review.user.email %></b>
+  <% end %>
+  on <%= review.date_visited.strftime("%-m/%-d/%Y") %>.&ensp;
+  (Posted <%= time_ago_in_words(review.updated_at) %> ago.)
+</li>

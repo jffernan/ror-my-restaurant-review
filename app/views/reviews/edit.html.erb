@@ -1,0 +1,19 @@
+<fieldset>
+<legend>
+  <h3>
+    Edit Your Restaurant Review Below
+  </h3>
+</legend>
+<%= render 'form' %>
+</fieldset>
+<br/>
+<fieldset>
+<legend>
+  <h3>Delete Review</h3>
+</legend>
+<br/>
+  <%= button_to 'Delete Review', review_path(@review),
+              method: :delete,
+              data: { confirm: 'This will delete your review PERMANENTLY! Continue?' } %>
+</fieldset>
+<br/>

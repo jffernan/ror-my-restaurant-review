@@ -1,0 +1,5 @@
+<%= link_to "All Reviews", reviews_path %>
+<%= link_to "All Restaurants", restaurants_path %>
+<% if logged_in? %>
+<%= link_to "All Users", users_path %>
+<% end %>

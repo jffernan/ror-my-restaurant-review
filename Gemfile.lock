@@ -48,6 +48,8 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     bindex (0.5.0)
+    bootstrap-sass (3.1.1.1)
+      sass (~> 3.2)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (2.18.0)
@@ -70,14 +72,28 @@ GEM
     crass (1.0.3)
     erubi (1.7.1)
     execjs (2.7.0)
+    faker (1.7.3)
+      i18n (~> 0.5)
     ffi (1.9.23-x86-mingw32)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    i18n (1.0.0)
+    i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    kaminari (1.1.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.1.1)
+      kaminari-activerecord (= 1.1.1)
+      kaminari-core (= 1.1.1)
+    kaminari-actionview (1.1.1)
+      actionview
+      kaminari-core (= 1.1.1)
+    kaminari-activerecord (1.1.1)
+      activerecord
+      kaminari-core (= 1.1.1)
+    kaminari-core (1.1.1)
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -174,10 +190,13 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt!
+  bootstrap-sass (~> 3.1.1)
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  faker (= 1.7.3)
   jbuilder (~> 2.5)
+  kaminari
   pg (>= 0.18, < 2.0)
   puma (~> 3.7)
   rails (~> 5.1.6)

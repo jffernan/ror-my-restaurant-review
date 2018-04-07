@@ -2,6 +2,10 @@
 
 Welcome to My Restaurant Review Rails app where you can signup for a User account to Create, Read, Update, and Delete reviews of restaurants that you have visited. Here you can build and keep track of all the restaurants you have dined at! You can also view restaurant reviews by other Users.  Thank you for using my app.
 
+Demo at: https://ror-my-restaurant-review.herokuapp.com/
+
+Video at: https://youtu.be/6zpY7UO6Z4U
+
 View my blogs about the development of my app at:
 
 https://github.com/jffernan/jffernan.github.io/blob/master/_posts/2017-08-17-project_3_blog_rails_portfolio_project.markdown

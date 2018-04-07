@@ -14,3 +14,38 @@
 <div class="reviewLink"></div>
 </fieldset>
 <br/>
+
+<script> //type="text/javascript" charset="utf-8" not required in HTML5 because JS is its default
+$(function () {   //Create New Review rendered on same page below New form
+    $('form').submit(function(event) {    //This is NOT User-Friendly; don't NOT refactor to reviews.js else locks up all
+      //prevent form from submitting the default way, but prevents ARV error messages
+      event.preventDefault();
+      var values = $(this).serialize(); //jQuery method to .serialize form data of Review object instance into JSON string
+      var posting = $.post('/reviews', values); //AJAX POST request
+      posting.done(function(data) {
+        $('#restaurantName').css({ 'font-weight': 'bold' });
+        $("#restaurantName").text("Your Review Saved For: " + data["restaurant"]["name"] + '.');
+        $("#reviewBody").text("You commented: " + '"' + data["content"] + '".');
+        var cuisineType = data["cuisines"][0]["name"];
+        $("#reviewCuisines").html("You entered cuisine as: " + '"<b>' + cuisineType + '</b>."');
+        //Following showRating method created via jQuery on Review PROTOTYPE w/ bold formats on rating & name attributes.
+        $.extend({
+          showRating: function() {
+            var txt1 = data["rating"];
+            var txt2 = data["restaurant"]["name"]; // Next line append ES6 template literal into Rating msg to DOM
+            $('#reviewRating').append(`You gave a rating of "<b>${txt1}</b>" for ${txt2}.`);
+          }
+        });
+        $.showRating();
+        var visitDate = data["date_visited"];
+        var date = new Date(visitDate);
+        var newDate = date.toLocaleDateString();
+        $("#reviewDateVisited").text("You dined at " + data["restaurant"]["name"] + " on " + newDate + '.');
+        var txt1 = "THANK YOU for posting at ";
+        var txt2 = $("<b></b>").text("My Restaurant Review!"); // Create text with jQuery
+        $('#reviewThankYou').append(txt1, txt2); //Next append ES6 template literal to Thank you Paragraph
+        $(".reviewLink").html("<a href='/reviews/"+data['id'].toString()+"'>Continue To Review Page</a>");
+      });
+    });
+  });
+</script>

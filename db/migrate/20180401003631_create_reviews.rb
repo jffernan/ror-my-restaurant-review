@@ -4,9 +4,10 @@ class CreateReviews < ActiveRecord::Migration[5.1]
       t.text :content
       t.string :rating
       t.datetime :review_date
-      
-      t.belongs_to :review, index: true, foreign_key: true #need for heroku?
-      t.belongs_to :cuisine, index: true, foreign_key: true
+
+      #t.belongs_to :review, index: true, foreign_key: true #need for heroku?
+      #t.belongs_to :cuisine, index: true, foreign_key: true
+      #t.belongs_to :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end

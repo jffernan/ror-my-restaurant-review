@@ -1,9 +1,7 @@
-<br/>
 <fieldset>
 <legend>
   <h3>Restaurant Reviews</h3>
 </legend>
-<br/>
 <ul>
   <% @reviews.each do |review| %>
     <%= render partial: "more", locals: {review: review} %>

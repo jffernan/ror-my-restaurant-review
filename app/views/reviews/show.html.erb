@@ -2,7 +2,6 @@
 <legend>
   <h3>Review Page</h3>
 </legend>
-<br/>
 <ul>
   <li>Restaurant Name:&ensp;
     <span class="restName">
@@ -64,7 +63,6 @@
 <legend>
   <h3>More</h3>
 </legend>
-<br/>
 <% if current_user == @review.user %>
   <li>
     <%= link_to "Edit Review", edit_user_review_path(@review.user, @review) %>

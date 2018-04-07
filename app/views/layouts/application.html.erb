@@ -3,11 +3,9 @@
   <head>
     <title>My Restaurant Review</title>
      <%= csrf_meta_tags %>
-     
      <%= stylesheet_link_tag    'application', media: 'all' %>
      <%= javascript_include_tag 'application' %>
   </head>
-
   <body>
     <nav>
       <%= link_to "Home", root_path %>
@@ -21,7 +19,6 @@
       <% else %>
         <%= link_to "Sign Up", signup_path %>
       <% end %>
-
       <% flash.each do |name, msg| -%>
         <strong><%= content_tag :div, msg, class: name %></strong>
       <% end -%>

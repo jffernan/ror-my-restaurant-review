@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-
-  get '/logout', to: 'sessions#destroy'
+  delete '/logout' => 'sessions#destroy'
+  #get '/logout', to: 'sessions#destroy'
 
   resources :users, only: [:show] do #nested resource, parent: user => many reviews
     resources :reviews, only: [:index, :show, :new, :edit] #child: review LiMIT user to see ONLY another user's review(s)

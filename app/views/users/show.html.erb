@@ -2,7 +2,6 @@
 <legend>
   <h3>User Page</h3>
 </legend>
-<br/>
 <ul>
   <li><b>User Email:</b>&ensp;
     <%= @user.email %>
@@ -17,6 +16,7 @@
   <ol>
     <%= render @reviews %>
   </ol>
+  </br>
   <% end %>
   <% if current_user == @user %>
   <li>

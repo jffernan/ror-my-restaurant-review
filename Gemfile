@@ -40,6 +40,8 @@ gem 'jquery-rails'
 gem 'faker',          '1.7.3'
 #bs for styling
 gem "bootstrap-sass", "~> 3.1.1"
+#use ActiveModel::Serializer
+gem 'active_model_serializers'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

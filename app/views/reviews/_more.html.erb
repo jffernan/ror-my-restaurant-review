@@ -15,3 +15,13 @@
   </div>
 <br/>
 </li>
+<script>
+  $(function () {
+    $(".js-more").on('click', function() {
+      var id = $(this).data("id");
+      $.get("/reviews/" + id + ".json", function(data) { //High-level interface AJAX GET request
+        $("#body-" + id).html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + "Comments: " + '"' + data["content"] + '"');
+      });
+    });
+  });
+</script>

@@ -60,6 +60,36 @@
 </fieldset>
 <br/>
 <fieldset>
+
+<script>
+  $(function () {
+    $(".js-next").on("click", function() {
+      var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+      $.get("/reviews/" + nextId + ".json", function(data) { //High-level interface AJAX GET request
+        var review = data;
+        var rname = review["restaurant"]["name"];
+        $(".restName").html("<a href='/restaurants/"+data['id'].toString()+"'>"+rname+"</a>");
+        $(".reviewBody").html(review["content"]);
+        var cuisineType = review["cuisines"][0]["name"];
+        $(".reviewCuisines").html(cuisineType + ".");
+        $('.reviewRating').css({ 'font-weight': 'bold' });
+        $(".reviewRating").html(review["rating"]);
+        var visitDate = review["date_visited"];
+        var date = new Date(visitDate);
+        var newDate = date.toLocaleDateString();
+        $(".reviewDateVisited").html(newDate);
+        $(".reviewUpdatedAt").html(review["updated_at"]);
+        $('.userEmail').css({ 'font-weight': 'bold' });
+        $(".userEmail").html(review["user"]["email"]);
+        $("a[href$='.com']").html(review["restaurant"]["name"]);
+        $(".load_more").css({ 'font-weight': 'bold' });
+        $(".load_more").html(review["restaurant"]["name"]);
+        $(".js-next").attr("data-id", review["id"]); // re-set the Review id to current on button click
+      });
+    });
+  });
+</script>
+
 <legend>
   <h3>More</h3>
 </legend>
@@ -74,6 +104,16 @@
   for <span class="load_more"><b><%= @current_restaurant.name %></b>.</span>
 </li>
 <div class="reviews"></div>
+<script>
+  $(function() {
+    $(".load_more_reviews").on("click", function(e) {
+      $.get( this.href).done(function( response ) { //High-level interface AJAX GET request
+        $(".reviews").html(response)
+      })
+      e.preventDefault();
+    });
+  });
+</script>
 </br>
 <li>For more info about this restaurant, 'click' to web search for:
   <span class = "search">

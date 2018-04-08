@@ -12,10 +12,6 @@ https://github.com/jffernan/jffernan.github.io/blob/master/_posts/2017-08-17-pro
 
 https://github.com/jffernan/jffernan.github.io/blob/master/_posts/2017-09-08-project_4_blog_rails_app_w_jquery_front_end.markdown
 
-My Restaurant Review CMS app, built using Ruby On Rails with MVC & REST principles. User can signup/login to Create, Read, Update, & Delete reviews of restaurants & view other user reviews. 
-
-Video: https://youtu.be/FOafUHYa8AU
-
 ## Installation
 
 To use this app, clone from GitHub 'git clone git@github.com:jffernan/ror-my-restaurant-review', 'cd' to the new directory, then run `bundle install`, and last, run `rails server` or 'rails s'. Last, click on the http link to open my app in your browser. If you run 'rake db:seed' in the terminal, this will seed the database with fake Users & Reviews.

@@ -48,6 +48,11 @@
       <%= f.date_field :date_visited %>
       <br></br>
     </div>
+    <div class="field">
+       <%= f.label :image, "Upload Image:" %> &ensp;
+       <%= f.file_field :image %>
+       <br></br>
+    </div>
     <div class="actions">
       <%= f.submit "Save Review" %>
     </div>

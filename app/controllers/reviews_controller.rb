@@ -76,6 +76,7 @@ class ReviewsController < ApplicationController
                                    :content,
                                    :rating,
                                    :date_visited,
+                                   :image,
                                    :cuisine_ids => [],
                                    :cuisines_attributes => [:name]
                                    ) #ALT: cuisine_ids:[], cuisines_attributes: [:name]

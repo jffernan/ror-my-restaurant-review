@@ -7,7 +7,7 @@
     <span class="restName">
       <%= link_to "#{@current_restaurant.name}", restaurant_path(@current_restaurant) %>
     </span>
-    <%= image_tag @review.image.url %>
+    <%= image_tag(@review.image.url, alt: 'Missing') unless @review.image.blank? %>
   </li>
   <br/>
   <li>Comments:&ensp;

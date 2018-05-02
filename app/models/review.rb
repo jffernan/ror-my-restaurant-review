@@ -10,7 +10,8 @@ class Review < ApplicationRecord
   validates_presence_of :restaurant_name, :date_visited, :rating
 
   validates :content, presence: true, length: { minimum: 10 }
-
+  mount_uploader :image, ImageUploader
+  
   def restaurant_name #No db column for restaurant_name in Reviews table
     self.restaurant.name if self.restaurant
   end

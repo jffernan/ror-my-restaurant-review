@@ -50,20 +50,16 @@
     <div class="field">
       <%= f.label :date_visited, "Date Visited (or today, #{Time.now.strftime("%m/%d/%Y")}):" %> &ensp;
       <%= f.date_field :date_visited %>
+      <br></br>
     </div>
-</fieldset>
-<fieldset>
-<legend>
-  <h3>Upload Image</h3>
-</legend>
-  <div class="field">
-     <%= f.file_field :image %>
-  </div>
-</fieldset>
-</br>
-<div class="actions">&ensp;&ensp;&ensp;
-  <b><%= f.submit "Save Review" %></b>
-</div>
+    <div class="field">
+      <%= f.label :image, "Upload Image:" %> &ensp;
+      <%= f.file_field :image %>
+      <br></br>
+    </div>
+    <div class="actions">
+      <%= f.submit "Save Review" %>
+    </div>
 <% end %>
 <fieldset>
 <legend>

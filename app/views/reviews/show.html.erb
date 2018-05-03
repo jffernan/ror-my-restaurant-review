@@ -101,6 +101,10 @@
     <%= link_to "Edit Review", edit_user_review_path(@review.user, @review) %>
   </li>
 <br/>
+  <li>
+    <%= link_to "Upload Image", edit_user_review_path(@review.user, @review) %>
+  </li>
+<br/>
 <% end %>
 <li>
   <%= link_to "Load More Reviews", restaurant_reviews_path(@current_restaurant), :class => "load_more_reviews" %>

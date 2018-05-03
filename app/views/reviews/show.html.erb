@@ -2,12 +2,14 @@
 <legend>
   <h3>Review Page</h3>
 </legend>
+<span class="borderbox">
+  <%= image_tag(@review.image.url, alt: 'Missing') if @review.image? %>
+</span>
 <ul>
   <li>Restaurant Name:&ensp;
     <span class="restName">
       <%= link_to "#{@current_restaurant.name}", restaurant_path(@current_restaurant) %>
     </span>
-    <%= image_tag(@review.image.url, alt: 'Missing') unless @review.image.blank? %>
   </li>
   <br/>
   <li>Comments:&ensp;
